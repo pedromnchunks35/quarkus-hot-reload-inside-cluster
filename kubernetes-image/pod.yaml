@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: quarkus-app
+  template:
+    metadata:
+      labels:
+        deployment: quarkus-app
+        service: quarkus
+    spec:
+      containers:
+        - name: quarkus-container
+          image: openjdk:17
+          env:
+            - name: QUARKUS_LAUNCH_DEVMODE
+              value: "true"
+          command:
+            ["/bin/sh", "-c", "java -jar /app/quarkus-app/quarkus-run.jar"]
+          volumeMounts:
+            - name: quarkus-volume
+              mountPath: "/app"
+      volumes:
+        - name: quarkus-volume
+          hostPath:
+            path: /mnt/c/Users/psousaesilva/Documents/code-with-quarkus/code-with-quarkus/target
