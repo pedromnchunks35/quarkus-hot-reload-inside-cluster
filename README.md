@@ -15,3 +15,17 @@
   ```
     grpcurl -plaintext -d '{"name": "Alice"}' 172.24.166.62:30001 hello.HelloGrpc/SayHello
   ```
+- Check the resources for more info
+  ```
+  quarkus.package.jar.type=mutable-jar
+  quarkus.http.host=0.0.0.0
+  quarkus.live-reload.password=12341234
+  quarkus.live-reload.url=http://172.24.166.62:30000
+  quarkus.profile=dev
+  quarkus.grpc.server.port=2040
+  ```  
+- we should get something like this as config
+- We configed the host acceptance
+- The profile we config for dev
+- We config also the grpc port for the server because it was with conflits
+- Only the password the url for live-reload are for the client when we use the mvn quarkus:remote-dev
